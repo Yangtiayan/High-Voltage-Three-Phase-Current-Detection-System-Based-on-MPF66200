@@ -44,3 +44,7 @@ The ADC operates in single conversion mode, with a 5V reference voltage. The con
 ### Data Acquisition and Real-Time Processing
 
 The TIMR1 timer overflows every 50 µs (corresponding to 20 kHz), which automatically triggers a multi-channel scan conversion by the ADC. The ADC sequentially converts data from channels CH0, CH1, CH2, CH4, CH6, and CH10. Upon the completion of the last channel's conversion (CH10), the ADC module generates an interrupt. Within the interrupt service routine, the raw values (0-4095) for the three differential pairs are read and used to calculate the real-time differential value, thereby suppressing common-mode environmental noise. The calculation is performed using the following formula:
+
+`inputch0 = ADC_CH1 - ADC_CH0`
+`inputch1 = ADC_CH6 - ADC_CH2`
+`inputch2 = ADC_CH10 - ADC_CH4`
