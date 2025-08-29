@@ -25,7 +25,7 @@ The power supply stage employs the MPS MIE1W0505 isolated DC–DC converter, whi
 
 ## Embedded Software Design 
 
-The overall function of the code is to acquire analog signals using six ADC channels configured as three differential input pairs. After signal acquisition, the data undergoes filtering and RMS value calculation. The resulting data is then transmitted via UART. The system operates at a sampling rate of 20 kHz. An RMS value is calculated after every 400 samples, which corresponds to a 20 ms period. This period is specifically chosen to match the frequency of the current signal (50 Hz). The code's operation can be logically divided into the following three distinct steps.
+The overall function of the code is to acquire analog signals using six ADC channels configured as three differential input pairs. After signal acquisition, the data undergoes filtering and RMS value calculation. The resulting data is then transmitted via UART. The system operates at a sampling rate of 20 kHz. An RMS value is calculated after every 400 samples, which corresponds to a 20 ms period. This period is specifically chosen to match the frequency of the current signal (50 Hz). The code's operation can be logically divided into the following three distinct steps. The User folder contains the core source code, including main.c, which implements the overall functionality of the design. The Keil_Project folder provides the project framework and low-level drivers, encompassing the Keil project files, debugging and compilation files, project startup files, and fundamental peripheral drivers.
 
 ### Initialization
 
