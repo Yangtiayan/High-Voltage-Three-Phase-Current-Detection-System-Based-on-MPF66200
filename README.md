@@ -4,3 +4,4 @@
 2. Periodic Transmission of Three-Phase High-Voltage Current Measurements to the Host Computer using Modbus RTU Protocol.
 3. Signal Chain Simulation and Analysis, Schematic and PCB Design.
 
+## Hardware Design
