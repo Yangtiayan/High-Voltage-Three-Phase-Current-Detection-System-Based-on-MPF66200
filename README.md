@@ -5,7 +5,7 @@
 3. Signal Chain Simulation and Analysis, Schematic and PCB Design.
 
 ## Hardware Design
-The schematic and PCB integrated file is ProPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro, which can be opened using EasyEDA Professional.
+The schematic and PCB integrated file is ProPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro, which can be opened using EasyEDA Professional. The PCB layout is shown in Fig.1. Multiple test points have been incorporated into the board design to facilitate performance evaluation. These test points enable real-time monitoring of signal variations and provide a means to verify the correctness of the MCU computation results.
 
 This work presents the design of a three-phase high-voltage current sensing system with a maximum RMS current rating of 500 A and a maximum RMS common-mode voltage of 380 V. A high-side current sensing scheme is adopted, which, compared with conventional low-side sensing, provides superior capability for detecting downstream faults.
 
