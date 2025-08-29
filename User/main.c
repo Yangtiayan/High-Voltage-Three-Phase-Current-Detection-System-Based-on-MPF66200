@@ -1,46 +1,3 @@
-/**
- **********************************************************************************************
- * @file    main.c
- * @author  MPS Firmware Team
- * @version V1.0.0
- * @date    07-31-2023
- * @brief   Main program body.
- *
- * @attention  list of modification history records:
- *           + 1.Date: mm-dd-yy    Author: xx.xx    Modification: xxxxxxxxxxx.
- *           + 2.Date: mm-dd-yy    Author: xx.xx    Modification: xxxxxxxxxxx.
- *
- **********************************************************************************************
- * @copyright Copyright (c) 2021-2023, Monolithic Power Systems, Inc.
-
-        All rights reserved.
-
-        Redistribution and use in source and binary forms, with or without modification,
-        are permitted provided that the following conditions are met:
-
-        1. Redistributions of source code must retain the above copyright notice, this
-           list of conditions and the following disclaimer.
-        2. Redistributions in binary form must reproduce the above copyright notice,
-           this list of conditions and the following disclaimer in the documentation
-           and/or other materials provided with the distribution.
-        3. Neither the name of the copyright holder nor the names of its contributors
-           may be used to endorse or promote products derived from this software without
-           specific prior written permission.
-
-            THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-        AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-        WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-        IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
-        INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
-        NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-        WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-        ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
-        OF SUCH DAMAGE.
- **********************************************************************************************
- */
-
-/* Includes ---------------------------------------------------------------------------------*/
 #include <string.h>
 #include "mpf66xxx.h"
 #include <math.h>
@@ -108,12 +65,7 @@ float calu111=0;
 float caly111=0;
 float calv111=0;
 
-/**********************************************************************************************
- * @brief      Main program.
- * @param[in]  None
- * @param[out] None
- * @retval     None
- *********************************************************************************************/
+
 int main(void)
 {
     ADC_InitStructure ADC_initStruct;
@@ -137,24 +89,8 @@ int main(void)
     PORT_Init(PORTB, PIN0, 0, 0);
     PORT_Init(PORTM, PIN4, 0, 0);	
     PORT_Init(PORTM, PIN8, 0, 0);
-    /* note:
-     * On MPF662xxC8, the channel initialization of ADC0_CH4 must be changed to: PORT_Init(PORTB, PIN0, 0, 0);
-     *
-     * On MPF662xxPG6, the channel initialization of ADC0_CH4 must be changed to: PORT_Init(PORTM, PIN4, 0, 0);
-     *
-     * On MPF662xxDK6, the channel initialization of ADC0_CH4 must be changed to: PORT_Init(PORTM, PIN8, 0, 0);
-     *
-     */
-#endif
 
-    /* ADC sampling clock is 12MHz / 2 / 6 = 1MHz
-     * It takes three clock cycles for the first conversion channel to complete the conversion (one cycle to convert,
-     * two cycles to wait), so when converting on a single channel, the macro conversion rate is 1MHz / 3 = 333KSPS.
-     * The other conversion channels require one clock cycle to complete the conversion (one cycle conversion, no wait
-     * cycle), so when dual-channel conversion is performed, the macro conversion rate is 1MHz / (3 + 1) * 2 = 500KSPS.
-     * But it should be noted that: Microscopically, the conversion of each channel is completed within one cycle,
-     * that is, the microscopic conversion rate is always 1MSPS.
-     */
+	
 #if defined(CHIP_MPF662xx)
     ADC_initStruct.clk_src = ADC_CLKSRC_HRC_DIV2;
     ADC_initStruct.clk_div = 6;
@@ -420,7 +356,5 @@ void low_bandwidth_filter(int Input0 ,int Input1,int Input2, int coeff, short *O
    c2=((32768 - coeff)*(*Output2)+ (coeff*Input2))% 32768;
  
 }
-/*********************************************************************************************\
-            Copyright © 2023 Monolithic Power Systems, Inc. All rights reserved.
-\*********************************************************************************************/
+
 
