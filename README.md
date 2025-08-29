@@ -10,7 +10,7 @@ The schematic and PCB integrated file is ProPrj\_Isolated Current Sensing\_lates
 <p align="center">
   <img src="https://github.com/Yangtiayan/High-Voltage-Three-Phase-Current-Detection-System-Based-on-MPF66200/blob/main/img/board.png" width="80%" alt="Board Picture">
   <br>
-  <i>Fig 1. Three-Phase-Current-Detection Board</i>
+  Fig 1. Three-Phase-Current-Detection Board
 </p>
 
 
