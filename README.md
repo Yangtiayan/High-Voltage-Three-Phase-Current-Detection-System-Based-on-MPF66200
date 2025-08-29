@@ -38,5 +38,6 @@ Pair 1: Channel 1 (PA11) as the positive input (+) and Channel 0 (PA14) as the n
 Pair 2: Channel 6 (PA08) as the positive input (+) and Channel 2 (PA09) as the negative input (-).
 
 Pair 3: Channel 4 (PM07) as the positive input (+) and Channel 10 (PM08) as the negative input (-).
+
 The ADC operates in single conversion mode, with a 5V reference voltage. The conversions are triggered by Timer 1, which also generates an interrupt upon completion.
 
