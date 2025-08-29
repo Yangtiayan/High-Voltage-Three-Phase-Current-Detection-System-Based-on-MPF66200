@@ -27,8 +27,6 @@ The power supply stage employs the MPS MIE1W0505 isolated DC–DC converter, whi
 
 The overall function of the code is to acquire analog signals using six ADC channels configured as three differential input pairs. After signal acquisition, the data undergoes filtering and RMS value calculation. The resulting data is then transmitted via UART. The system operates at a sampling rate of 20 kHz. An RMS value is calculated after every 400 samples, which corresponds to a 20 ms period. This period is specifically chosen to match the frequency of the current signal (50 Hz). The code's operation can be logically divided into the following three distinct steps.
 
-## Embedded Software Design 
-
 ### Initialization
 
 This steo involves configuring the system clock, UART, and the ADC module with its associated timer. Specifically, UART0 is configured for data transmission with a baud rate of 57600, using an 8N1 format, with the TX and RX pins mapped to PB14 and PB15, respectively. Six ADC channels are configured to form three differential input pairs:
@@ -60,3 +58,9 @@ To meet cost-saving requirements, the evaluation board does not use external har
 The ADC Interrupt Service Routine (ISR) must complete its data processing and prepare for the next sample in less than 50 µs. This is achieved by using Q15 fixed-point arithmetic and bit-shift operations, which replace slow floating-point calculations and significantly enhance computational efficiency. The MCU's core frequency is 48 MHz, allowing the filtering of three signals to be completed in less than 10 µs, which successfully meets the time constraints of the ADC ISR requirement. In contrast, floating-point operations would require dozens or even hundreds of clock cycles, making them too slow for real-time data processing within the ADC interrupt.
 
 The ADC ISR serves as the core real-time processing unit of the system, and it must complete all operations within 50 µs. After clearing the interrupt flag, the routine reads the ADC values, calculates the differential signals, and applies a low-pass filter. The three filtered signals are then individually squared and accumulated into global variables for subsequent RMS value calculation. Finally, the sample count is incremented. Once the number of samples reaches a preset count of 400, a conversion flag (conversion_flag) is set to 1, which notifies the main loop that a batch of results is ready for calculation and data transmission.
+
+### Batch Processing and Data Transmission
+
+Once the main loop detects that the conversion_flag has been set, it begins processing the batch of 400 accumulated samples. First, it performs the RMS value calculation, along with unit conversion and scaling. The data is then packaged into a Modbus RTU data frame to match the protocol of the host computer's receiver.
+
+The data frame uses 0x55 and 0xAA as start flags. The 16-bit integer values are split into high and low bytes, with the low byte preceding the high byte. The data from the three channels is arranged sequentially, and a 2-byte CRC is appended. Since the data packet is 10 bytes while the UART can only send 8 bytes at a time, this design employs a mixed transmission strategy: a portion of the data is sent directly, while the remaining data is handled by an interrupt service routine.
