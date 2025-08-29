@@ -8,7 +8,7 @@
 The schematic and PCB integrated file is ProPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro, which can be opened using EasyEDA Professional. The PCB layout is shown in Fig.1. To meet the requirements for both insulation performance and mechanical strength, the copper pour was removed from the section between the HV part and the LV part, with localized slots implemented. Multiple test points have been incorporated into the board design to facilitate performance evaluation. These test points enable real-time monitoring of signal variations and provide a means to verify the correctness of the MCU computation results.
 
 <p align="center">
-  <img src="https://github.com/Yangtiayan/High-Voltage-Three-Phase-Current-Detection -System-Based-on-MPF66200/blob/main/img/board.png" width="70%" alt="Board Picture">
+  <img src="https://github.com/Yangtiayan/High-Voltage-Three-Phase-Current-Detection-System-Based-on-MPF66200/blob/main/img/board.png" width="70%" alt="Board Picture">
   <br>
   Fig 1. Three-Phase-Current-Measurement  Board
 </p>
