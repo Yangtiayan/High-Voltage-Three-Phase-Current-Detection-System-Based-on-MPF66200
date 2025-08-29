@@ -5,4 +5,4 @@
 3. Signal Chain Simulation and Analysis, Schematic and PCB Design.
 
 ## Hardware Design
-The schematic and PCB integrated file is **ProPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro**, which can be opened using **EasyEDA Professional**.
+The schematic and PCB integrated file is roPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro, which can be opened using EasyEDA Professional.
