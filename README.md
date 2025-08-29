@@ -25,5 +25,18 @@ The power supply stage employs the MPS MIE1W0505 isolated DC–DC converter, whi
 
 ## Embedded Software Design 
 
-The overall function of the code is to acquire analog signals using six ADC channels configured as three differential input pairs. After signal acquisition, the data undergoes filtering and RMS value calculation. The resulting data is then transmitted via UART. The system operates at a sampling rate of 20 kHz. An RMS value is calculated after every 400 samples, which corresponds to a 20 ms period. This period is specifically chosen to match the frequency of the current signal (50 Hz). The code's operation can be logically divided into the following three distinct steps:
+The overall function of the code is to acquire analog signals using six ADC channels configured as three differential input pairs. After signal acquisition, the data undergoes filtering and RMS value calculation. The resulting data is then transmitted via UART. The system operates at a sampling rate of 20 kHz. An RMS value is calculated after every 400 samples, which corresponds to a 20 ms period. This period is specifically chosen to match the frequency of the current signal (50 Hz). The code's operation can be logically divided into the following three distinct steps.
+
+## Embedded Software Design 
+
+### Initialization
+
+This steo involves configuring the system clock, UART, and the ADC module with its associated timer. Specifically, UART0 is configured for data transmission with a baud rate of 57600, using an 8N1 format, with the TX and RX pins mapped to PB14 and PB15, respectively. Six ADC channels are configured to form three differential input pairs:
+
+Pair 1: Channel 1 (PA11) as the positive input (+) and Channel 0 (PA14) as the negative input (-).
+
+Pair 2: Channel 6 (PA08) as the positive input (+) and Channel 2 (PA09) as the negative input (-).
+
+Pair 3: Channel 4 (PM07) as the positive input (+) and Channel 10 (PM08) as the negative input (-).
+The ADC operates in single conversion mode, with a 5V reference voltage. The conversions are triggered by Timer 1, which also generates an interrupt upon completion.
 
