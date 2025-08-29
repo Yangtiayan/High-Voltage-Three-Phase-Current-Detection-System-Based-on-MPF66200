@@ -6,7 +6,7 @@
 
 ## Hardware Design
 The schematic and PCB integrated file is ProPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro, which can be opened using EasyEDA Professional. The PCB layout is shown in Fig.1. Multiple test points have been incorporated into the board design to facilitate performance evaluation. These test points enable real-time monitoring of signal variations and provide a means to verify the correctness of the MCU computation results.
-
+![image](https://github.com/Yangtiayan/High-Voltage-Three-Phase-Current-Detection-System-Based-on-MPF66200/blob/main/img/board.png)
 
 
 
