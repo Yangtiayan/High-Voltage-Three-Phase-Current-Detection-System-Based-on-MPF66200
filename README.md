@@ -7,6 +7,10 @@
 ## Hardware Design
 The schematic and PCB integrated file is ProPrj\_Isolated Current Sensing\_latest\_2025-08-29.epro, which can be opened using EasyEDA Professional. The PCB layout is shown in Fig.1. Multiple test points have been incorporated into the board design to facilitate performance evaluation. These test points enable real-time monitoring of signal variations and provide a means to verify the correctness of the MCU computation results.
 
+
+
+
+
 This work presents the design of a three-phase high-voltage current sensing system with a maximum RMS current rating of 500 A and a maximum RMS common-mode voltage of 380 V. A high-side current sensing scheme is adopted, which, compared with conventional low-side sensing, provides superior capability for detecting downstream faults.
 
 The front-end shunt resistor is selected as 0.35 mΩ, resulting in a maximum differential voltage of approximately ±250 mV across the resistor. To accommodate this, the design employs an AMC1300 isolated amplifier, featuring an input differential range of ±250 mV, a fixed gain of 8.2, and a working isolation voltage of 1500 V. The amplifier delivers a differential output voltage of ±2.05 V, with a typical common-mode output of 1.44 V. The output voltages at OUTP and OUTN range between 0.4 V and 2.47 V.
