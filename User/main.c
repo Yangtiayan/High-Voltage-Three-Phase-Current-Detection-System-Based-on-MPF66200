@@ -249,7 +249,6 @@ void UART0_Handler(void)
     }
 }
 
-
 /**********************************************************************************************
  * @brief      Serial port initialization configuration.
  * @param[in]  None
@@ -339,7 +338,6 @@ void verification(unsigned char*h)
 }
 
 
-
 void low_bandwidth_filter(int Input0 ,int Input1,int Input2, int coeff, short *Output0, short *Output1, short *Output2)
 { 
 	
@@ -356,5 +354,4 @@ void low_bandwidth_filter(int Input0 ,int Input1,int Input2, int coeff, short *O
    c2=((32768 - coeff)*(*Output2)+ (coeff*Input2))% 32768;
  
 }
-
 
