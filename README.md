@@ -52,3 +52,9 @@ $$
 \text{inputch2} &= ADC_{CH10} - ADC_{CH4}
 \end{aligned}
 $$
+
+Although the chip's internal design includes built-in operational amplifiers, the engineering version lacks full implementation of three op-amps. Consequently, hardware-based differential calculations to reduce processing time were not feasible, and a software-based subtraction method was used instead. As an alternative development option, this design also accommodates three external differential operational amplifier circuits connected to the MCU's ADC channels.
+
+To meet cost-saving requirements, the evaluation board does not use external hardware low-pass filters. Instead, it employs digital fixed-point filters. Each differential value is processed by a first-order IIR low-pass filter implemented in Q15 format. With a system sampling frequency of 20 kHz, a filter coefficient (α) of 1544, and a cutoff frequency of 150 Hz, the primary function is to preserve signal components with frequencies below **150 Hz** while significantly attenuating higher-frequency noise.
+
+The ADC Interrupt Service Routine (ISR) must complete its data processing and prepare for the next sample in less than 50 µs. This is achieved by using Q15 fixed-point arithmetic and bit-shift operations, which replace slow floating-point calculations and significantly enhance computational efficiency. The MCU's core frequency is 48 MHz, allowing the filtering of three signals to be completed in less than 10 µs, which successfully meets the time constraints of the ADC ISR without error. In contrast, floating-point operations would require dozens or even hundreds of clock cycles, making them too slow for real-time data processing within the ADC interrupt.
